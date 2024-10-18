@@ -1,140 +1,198 @@
  <!-- ======= Footer ======= -->
  @php $current_route_name=Route::currentRouteName() @endphp
  @php
-     use App\Models\Admin\ContactSetting;
-     $ContactSetting = ContactSetting::get_contact_us_details();
-     use App\Models\SiteSetting;
-     $social_facebook_url = SiteSetting::getSiteSettings('social_facebook_url');
-     $social_linkedin_url = SiteSetting::getSiteSettings('social_linkedin_url');
-     $social_instagram_url = SiteSetting::getSiteSettings('social_instagram_url');
-     $social_youtube_url = SiteSetting::getSiteSettings('social_youtube_url');
-     $footerLogo = SiteSetting::getSiteSettings('footer_logo');
-     use App\Models\Category;
-     $Category = Category::getCategory();
+ use App\Models\Admin\ContactSetting;
+ $ContactSetting = ContactSetting::get_contact_us_details();
+ use App\Models\SiteSetting;
+ $social_facebook_url = SiteSetting::getSiteSettings('social_facebook_url');
+ $social_linkedin_url = SiteSetting::getSiteSettings('social_linkedin_url');
+ $social_instagram_url = SiteSetting::getSiteSettings('social_instagram_url');
+ $social_youtube_url = SiteSetting::getSiteSettings('social_youtube_url');
+ $footerLogo = SiteSetting::getSiteSettings('footer_logo');
+ use App\Models\Category;
+ $Category = Category::getCategory();
  @endphp
- <!-- Footer Start -->
- <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
-     <div class="container py-5">
-         <div class="row g-5">
-             @if ($ContactSetting)
-                 <div class="col-lg-4 col-md-6">
-                     <h4 class="text-dark mb-4">Our Office</h4>
-                     @if ($ContactSetting['location'])
-                         <p class="mb-2 text-dark"><i class="fa fa-map-marker-alt me-3"></i>{{ $ContactSetting['location'] }}</p>
-                     @endif
-                     @if ($ContactSetting['phone'])
-                         <a class="text-dark" href="tel:{{ $ContactSetting['phone'] ? $ContactSetting['phone'] : '' }}">
-                             <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>{{ $ContactSetting['phone'] }}</p>
+
+
+ <!-- Footer -->
+ <footer>
+     <div class="bg2 p-t-40 p-b-25">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-4 p-b-20">
+                     <div class="size-h-3 flex-s-c">
+                         <a href="index.html">
+                             <img class="max-s-full" src="{{ asset('assets/front/images/icons/logo-02.png') }}" alt="LOGO">
                          </a>
-                     @endif
-                     @if ($ContactSetting['email'])
-                         <a class="text-dark"
-                             href="mailto:{{ $ContactSetting['email'] ? $ContactSetting['email'] : '' }}">
-                             <p class="mb-2"><i class="fa fa-envelope me-3"></i>{{ $ContactSetting['email'] }}</p>
-                         </a>
-                     @endif
-                     @if (
-                         (isset($social_facebook_url) && isset($social_facebook_url->value)) ||
-                             (isset($social_youtube_url) && isset($social_youtube_url->value)) ||
-                             (isset($social_linkedin_url) && isset($social_linkedin_url->value)) ||
-                             (isset($social_instagram_url) && isset($social_instagram_url->value)))
-                         <div class="d-flex pt-2">
-                             @if (isset($social_facebook_url) &&
-                                     isset($social_facebook_url->value) &&
-                                     $social_facebook_url != null &&
-                                     $social_facebook_url->value != '')
-                                 <a target="_blank" class="btn btn-square btn-outline-dark rounded-circle me-2"
-                                     href="{{ $social_facebook_url->value }}"><i class="fab fa-facebook-f"></i></a>
-                             @endif
-                             @if (isset($social_youtube_url) &&
-                                     isset($social_youtube_url->value) &&
-                                     $social_youtube_url != null &&
-                                     $social_youtube_url->value != '')
-                                 <a target="_blank" class="btn btn-square btn-outline-dark rounded-circle me-2"
-                                     href="{{ $social_youtube_url->value }}"><i class="fab fa-youtube"></i></a>
-                             @endif
-                             @if (isset($social_linkedin_url) &&
-                                     isset($social_linkedin_url->value) &&
-                                     $social_linkedin_url != null &&
-                                     $social_linkedin_url->value != '')
-                                 <a target="_blank" class="btn btn-square btn-outline-dark rounded-circle me-2"
-                                     href="{{ $social_linkedin_url->value }}"><i class="fab fa-linkedin-in"></i></a>
-                             @endif
+                     </div>
 
-                             @if (isset($social_instagram_url) &&
-                                     isset($social_instagram_url->value) &&
-                                     $social_instagram_url != null &&
-                                     $social_instagram_url->value != '')
-                                 <a target="_blank" class="btn
-                                     btn-square btn-outline-dark rounded-circle me-2"
-                                     href="{{ $social_instagram_url->value }}"><i class="fab fa-instagram"></i></a>
-                             @endif
+                     <div>
+                         <p class="f1-s-1 cl11 p-b-16">
+                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor magna eget
+                             elit efficitur, at accumsan sem placerat. Nulla tellus libero, mattis nec molestie at,
+                             facilisis ut turpis. Vestibulum dolor metus, tincidunt eget odio
+                         </p>
 
-                         </div>
-                     @endif
+                         <p class="f1-s-1 cl11 p-b-16">
+                             Any questions? Call us on (+1) 96 716 6879
+                         </p>
 
+
+                     </div>
                  </div>
-             @endif
-             @if (isset($Category) && !$Category->isEmpty())
-                 <div class="col-lg-4 col-md-6" id="isotope-project-flters">
-                     <h4 class="text-dark mb-4">Category</h4>
 
+                 <div class="col-sm-6 col-lg-4 p-b-20">
+                     <!-- <div class="size-h-3 flex-s-c">
+							<h5 class="f1-m-7 cl0">
+								Popular Posts
+							</h5>
+						</div>
 
-                     @if ($current_route_name == 'front.home')
-                         @foreach ($Category as $item)
-                             <a id="{{ $item->slug }}" data-filter=".{{ $item->slug }}" href="javascript:void(0);"
-                                 class="btn btn-link isotope-project-home {{ $item->slug }}-isotope-project-home-class"
-                                 href="">{{ $item->name }}</a>
-                         @endforeach
-                     @else
-                         @foreach ($Category as $item)
-                             <a href="{{ route('front.home') }}#{{ $item->slug }}" class="btn btn-link"
-                                 href="{{ $item->name }}">{{ $item->name }}</a>
-                         @endforeach
-                     @endif
+						<ul>
+							<li class="flex-wr-sb-s p-b-20">
+								<a href="#" class="size-w-4 wrap-pic-w hov1 trans-03">
+									<img src="{{ asset('assets/front/images/popular-post-01.jpg" alt="IMG">
+								</a>
+
+								<div class="size-w-5">
+									<h6 class="p-b-5">
+										<a href="#" class="f1-s-5 cl11 hov-cl10 trans-03">
+											Donec metus orci, malesuada et lectus vitae
+										</a>
+									</h6>
+
+									<span class="f1-s-3 cl6">
+										Feb 17
+									</span>
+								</div>
+							</li>
+
+							<li class="flex-wr-sb-s p-b-20">
+								<a href="#" class="size-w-4 wrap-pic-w hov1 trans-03">
+									<img src="{{ asset('assets/front/images/popular-post-02.jpg" alt="IMG">
+								</a>
+
+								<div class="size-w-5">
+									<h6 class="p-b-5">
+										<a href="#" class="f1-s-5 cl11 hov-cl10 trans-03">
+											Lorem ipsum dolor sit amet, consectetur
+										</a>
+									</h6>
+
+									<span class="f1-s-3 cl6">
+										Feb 16
+									</span>
+								</div>
+							</li>
+
+							<li class="flex-wr-sb-s p-b-20">
+								<a href="#" class="size-w-4 wrap-pic-w hov1 trans-03">
+									<img src="{{ asset('assets/front/images/popular-post-03.jpg" alt="IMG">
+								</a>
+
+								<div class="size-w-5">
+									<h6 class="p-b-5">
+										<a href="#" class="f1-s-5 cl11 hov-cl10 trans-03">
+											Suspendisse dictum enim quis imperdiet auctor
+										</a>
+									</h6>
+
+									<span class="f1-s-3 cl6">
+										Feb 15
+									</span>
+								</div>
+							</li>
+						</ul> -->
                  </div>
-             @endif
-             <div class="col-lg-4 col-md-12">
-                 <h4 class="text-dark mb-4">Newsletter</h4>
-                 <p class="text-dark">Subscribe to Our Newsletter for Daily Updates</p>
-                 <div class="position-relative w-100">
-                     <form id="newsletter-form" action="{{ route('front.newsletter.save') }}" method="POST">
-                         @csrf
-                         <input class="form-control bg-white border-white w-100 py-3 ps-4 footer-nl-input"
-                             type="text" id="email" name="email" placeholder="Your email">
-                         <button type="submit"
-                             class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Subscribe</button>
-                         <div id="email_error" class="text-dark w-100"> @error('email')
-                                 {{ $message }}
-                             @enderror
+
+                 <div class="col-sm-6 col-lg-4 p-b-20">
+                     <!-- <div class="size-h-3 flex-s-c">
+							<h5 class="f1-m-7 cl0">
+								Contact Us
+							</h5>
+						</div> -->
+
+                     <ul class="m-t--12 pt-4">
+                         <li class="how-bor1 p-rl-5 p-tb-10">
+                             <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+                                 Email : test@gmail.com
+                             </a>
+                         </li>
+
+                         <li class="how-bor1 p-rl-5 p-tb-10">
+                             <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+                                 Contact : 88888888888
+                             </a>
+                         </li>
+
+                         <li class="how-bor1 p-rl-5 p-tb-10">
+                             <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+                                 Address : Street Style 122545
+                             </a>
+                         </li>
+
+                         <div class="mt-3">
+                             <h5 class="f1-m-7 cl0">
+                                 Follow Us
+                             </h5>
                          </div>
-                     </form>
+                         <div class="p-t-15">
+                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                 <span class="fab fa-facebook-f"></span>
+                             </a>
+
+                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                 <span class="fab fa-twitter"></span>
+                             </a>
+
+                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                 <span class="fab fa-pinterest-p"></span>
+                             </a>
+
+                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                 <span class="fab fa-vimeo-v"></span>
+                             </a>
+
+                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                 <span class="fab fa-youtube"></span>
+                             </a>
+                         </div>
+
+                     </ul>
                  </div>
              </div>
          </div>
      </div>
- </div>
- <!-- Footer End -->
+     <section class="bg2 ">
+         <div class="b-section-marquee-box cl11">
+             <h2 class="marquee-text cl11">we are not sebi registered disclaimer •</h2>
+             <h2 class="marquee-text cl11">we are not sebi registered disclaimer •</h2>
+             <h2 class="marquee-text cl11">we are not sebi registered disclaimer •</h2>
+             <h2 class="marquee-text cl11">we are not sebi registered disclaimer •</h2>
+         </div>
+     </section>
 
+     <div class="bg11">
+         <div class="container size-h-4 flex-c-c p-tb-15">
+             <span class="f1-s-1 cl0 txt-center">
+                 Copyright &copy;
+                 <script>
+                     document.write(new Date().getFullYear());
+                 </script>
 
- <!-- Copyright Start -->
- <div class="container-fluid copyright py-4">
-     <div class="container">
-         <div class="row">
-             <div class="col-md-12 text-center mb-3 mb-md-0">
-                 &copy; <?php echo date('Y'); ?> <a class="border-bottom"
-                     href="{{ route('front.home') }}">{{ env('APP_NAME', 'Laravel App') }}</a>, All Right Reserved.
-             </div>
-             {{-- <div class="col-md-6 text-center text-md-end">
-                 <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                 Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-             </div> --}}
+                 All rights reserved | This template is made with
+
+                 <i class="fa fa-heart" aria-hidden="true"></i> by
+
+                 <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+             </span>
          </div>
      </div>
+ </footer>
+ <!-- Back to top -->
+ <div class="btn-back-to-top" id="myBtn">
+     <span class="symbol-btn-back-to-top">
+         <span class="fas fa-angle-up"></span>
+     </span>
  </div>
- <!-- Copyright End -->
-
-
- <!-- Back to Top -->
- <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
-         class="bi bi-arrow-up"></i></a>

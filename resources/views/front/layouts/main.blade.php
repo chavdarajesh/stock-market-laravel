@@ -22,7 +22,7 @@ $favicon = SiteSetting::getSiteSettings('favicon');
     @include('front.layouts.head')
 </head>
 
-<body>
+<body class="animsition">
     @include('front.include.header')
 
     @yield('content')

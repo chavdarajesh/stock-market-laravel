@@ -1,26 +1,21 @@
-<!-- Google Web Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/vendor/bootstrap/css/bootstrap.min.css') }}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/fonts/fontawesome-5.0.8/css/fontawesome-all.min.css') }}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/fonts/iconic/css/material-design-iconic-font.min.css') }}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/vendor/animate/animate.css') }}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/vendor/css-hamburgers/hamburgers.min.css') }}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/vendor/animsition/css/animsition.min.css') }}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/util.min.css') }}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/main-new.css') }}">
+<!--===============================================================================================-->
 
-<!-- Icon Font Stylesheet -->
-<!-- <link href="{{ asset('assets/front/css/font-awesome.min.css') }}" rel="stylesheet"> -->
-<!-- <link href="{{ asset('assets/front/css/bootstrap-icons.css') }}" rel="stylesheet"> -->
-
-<!-- Icon Font Stylesheet -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-<!-- Libraries Stylesheet -->
-<link href="{{ asset('assets/front/lib/animate/animate.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/front/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/front/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
-
-<!-- Customized Bootstrap Stylesheet -->
-<link href="{{ asset('assets/front/css/bootstrap.min.css') }}" rel="stylesheet">
-
-<!-- Template Stylesheet -->
-<link href="{{ asset('assets/front/css/style.css') }}" rel="stylesheet">
 
 {{-- Custom --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('custom-assets/front/css/toastr.min.css') }}">

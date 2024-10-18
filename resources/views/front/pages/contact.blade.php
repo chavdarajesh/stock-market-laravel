@@ -1,231 +1,144 @@
 @extends('front.layouts.main')
 @section('title', 'Contact')
 @section('css')
-    <style>
-        .page-header {
-            background: linear-gradient(rgba(255, 255, 255, .6), rgba(0, 0, 0, .6)), url('{{ asset('custom-assets/front/images/contact-us-1.webp') }}') center center no-repeat !important;
-        }
-        .map-ifrem iframe{
-            width: 100%;
-            height: 100%;
-        }
-    </style>
+<link href="{{ asset('assets/front/css/contact.css') }}" rel="stylesheet">
+
 @stop
 @section('content')
+<section id="center" class="center_serv">
+    <div class="container">
+        <div class="row">
+            <div class="center_blog_1 text-center clearfix">
+                <div class="col-sm-12">
+                    <h4 class="head_bg mgt mgb"><span>CONTACT US</span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container text-center py-5">
-            <h1 class="display-3 text-white mb-4 animated slideInDown">Contact Us</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="{{ route('front.home') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Page Header End -->
-    @if ($ContactSetting)
-<!-- Top Feature Start -->
-<div class="container-fluid top-feature py-5 pt-lg-0">
-    <div class="container py-5 pt-lg-0">
-        <div class="row gx-0">
-            @if ($ContactSetting['location'])
-            <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
-                <div class="bg-white  d-flex align-items-center h-100 px-5" style="min-height: 160px;">
-                    <div class="d-flex">
-                        <div class="flex-shrink-0 btn-lg-square rounded-circle bg-dark">
-                            <i class="fa fa-map-marker-alt  text-light"></i>
+<section id="contact" class="clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="contact_1  clearfix">
+                <div class="col-sm-8">
+                    <div class="contact_1lm clearfix">
+                        <div class="contact_1l clearfix">
+                            <h4 class="col_1 mgt">Get in touch</h4>
+                            <h3>Write Us A Message</h3>
+                        </div><br>
+                        <div class="checkout_1l1 clearfix">
+                            <div class="col-sm-6 space_left">
+                                <h5>Your Name <span class="col_3">*</span></h5>
+                                <input class="form-control" type="text">
+                            </div>
+                            <div class="col-sm-6 space_left">
+                                <h5>Your Subjects <span class="col_3">*</span></h5>
+                                <input class="form-control" type="text">
+                            </div>
                         </div>
-                        <div class="ps-3">
-                            <h4>Location</h4>
-                            <span>{{ $ContactSetting['location'] }}</span>
+                        <div class="checkout_1l1 clearfix">
+                            <div class="col-sm-6 space_left">
+                                <h5>Your Email<span class="col_3">*</span></h5>
+                                <input class="form-control" type="text">
+                            </div>
+                            <div class="col-sm-6 space_left">
+                                <h5>Your Phone <span class="col_3">*</span></h5>
+                                <input class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="checkout_1l1 clearfix">
+                            <div class="col-sm-12 space_left">
+                                <h5>Your Message <span class="col_3">*</span></h5>
+                                <textarea class="form-control form_1"></textarea>
+                                <h6><a class="button" href="#">SEND MESSAGE</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="contact_1rm clearfix">
+                        <div class="contact_1r1 mgt clearfix">
+                            <h4><span><i class="fa fa-phone"></i></span> Call us Now:</h4>
+                            <p>+123 456-789-0000</p>
+                            <p class="mgt">+123 456-789-0000</p>
+                        </div>
+                        <div class="contact_1r1 clearfix">
+                            <h4><span><i class="fa fa-envelope"></i></span> Email:</h4>
+                            <p><a href="#">info@gmail.com</a></p>
+                            <p class="mgt">info@gmail.com</p>
+                        </div>
+                        <div class="contact_1r1 clearfix">
+                            <h4><span><i class="fa fa-map-marker"></i></span> Our Address:</h4>
+                            <p>LB-61/1, Travel Agency, 15 Grand</p>
+                            <p class="mgt">Central Terminal, London.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            @endif
-            @if ($ContactSetting['phone'])
-            <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
-                <div class="bg-white  d-flex align-items-center h-100 px-5" style="min-height: 160px;">
-                    <div class="d-flex">
-                        <div class="flex-shrink-0 btn-lg-square rounded-circle bg-dark">
-                            <i class="fa fa-phone-alt text-light"></i>
-                        </div>
-                        <div class="ps-3">
-                            <h4>Phone</h4>
-                            <a class="text-dark" target="_blank"  href="tel:{{ $ContactSetting['phone'] ? $ContactSetting['phone'] : '' }}">
-                                <span>{{ $ContactSetting['phone'] }}</span>
-                            </a>
-                        </div>
-                    </div>
+            <div class="contact_2 clearfix">
+                <div class="col-sm-12">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949920266738!3d25.782390733064336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C+FL%2C+USA!5e0!3m2!1sen!2sin!4v1530774403788" style="border:0; height:500px; width:100%;" allowfullscreen=""></iframe>
                 </div>
-            </div>
-            @endif
-            @if ($ContactSetting['email'])
-            <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-                <div class="bg-white  d-flex align-items-center h-100 px-5" style="min-height: 160px;">
-                    <div class="d-flex">
-                        <div class="flex-shrink-0 btn-lg-square rounded-circle bg-dark">
-                            <i class="fa fa-envelope text-light"></i>
-                        </div>
-                        <div class="ps-3">
-                            <h4>Email</h4>
-                            <a class="text-dark" target="_blank" href="mailto:{{ $ContactSetting['email'] ? $ContactSetting['email'] : '' }}">
-                                <span>{{ $ContactSetting['email'] }}</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
-        </div>
-    </div>
-</div>
-<!-- Top Feature End -->
-@endif
-    <!-- Contact Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <p class="fs-5 fw-bold text-dark">Contact Us</p>
-                    <h1 class="display-5 mb-5">If You Have Any Query, Please Contact Us</h1>
-                    {{-- <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p> --}}
-                    <form id="form" action="{{ route('front.contact.message.save') }}" method="POST">
-                        @csrf
-                        <div class="row g-3">
-                            <div class="col-md-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control @error('name') border border-danger @enderror"
-                                        id="name" placeholder="Your Name" value="{{ old('name') }}" name="name">
-                                    <label for="name">Name</label>
-                                </div>
-                                <div id="name_error" class="text-danger"> @error('name')
-                                        {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email"
-                                        class="form-control @error('email') border border-danger @enderror " id="email"
-                                        placeholder="Your Email" value="{{ old('email') }}" name="email">
-                                    <label for="email">Email</label>
-                                </div>
-                                <div id="email_error" class="text-danger"> @error('email')
-                                        {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-floating">
-                                    <input type="text"
-                                        class="form-control @error('phone') border border-danger @enderror " id="phone"
-                                        placeholder="Phone" name="phone" value="{{ old('phone') }}">
-                                    <label for="phone">Phone</label>
-                                </div>
-                                <div id="phone_error" class="text-danger"> @error('phone')
-                                        {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text"
-                                        class="form-control @error('subject') border border-danger @enderror "
-                                        id="subject" placeholder="Subject" name="subject" value="{{ old('subject') }}">
-                                    <label for="subject">Subject</label>
-                                </div>
-                                <div id="subject_error" class="text-danger"> @error('subject')
-                                        {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control @error('message') border border-danger @enderror " placeholder="Leave a message here"
-                                        id="message" style="height: 100px" name="message">{{ old('message') }}</textarea>
-                                    <label for="message">Message</label>
-                                </div>
-                                <div id="message_error" class="text-danger"> @error('message')
-                                        {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary py-3 px-4" type="submit">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                @if ($ContactSetting['map_iframe'])
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 450px;">
-                        <div class="position-relative rounded overflow-hidden h-100 map-ifrem">
-                            {!! $ContactSetting['map_iframe'] !!}
-                        </div>
-                    </div>
-                @endif
             </div>
         </div>
     </div>
-    <!-- Contact End -->
+</section>
 @stop
 @section('js')
-    <script>
-        $(document).ready(function() {
-            $('#form').validate({
-                rules: {
-                    name: {
-                        required: true,
-                    },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    phone: {
-                        number: true
-                    },
-                    subject: {
-                        required: true,
-                    },
-                    message: {
-                        required: true,
-                    }
+<script>
+    $(document).ready(function() {
+        $('#form').validate({
+            rules: {
+                name: {
+                    required: true,
                 },
-                messages: {
-                    name: {
-                        required: 'This field is required',
-                    },
-                    email: {
-                        required: 'This field is required',
-                        email: 'Enter a valid email',
-                    },
-                    phone: {
-                        number: 'Please enter a valid phone number.',
-                    },
-                    subject: {
-                        required: 'This field is required',
-                    },
-                    message: {
-                        required: 'This field is required',
-                    }
+                email: {
+                    required: true,
+                    email: true
                 },
-                errorPlacement: function(error, element) {
-                    error.addClass('invalid-feedback');
-                    $('#' + element.attr('name') + '_error').html(error)
+                phone: {
+                    number: true
                 },
-                highlight: function(element, errorClass, validClass) {
-                    $(element).addClass('border border-danger');
+                subject: {
+                    required: true,
                 },
-                unhighlight: function(element, errorClass, validClass) {
-                    $(element).removeClass('border border-danger');
-                },
-                submitHandler: function(form) {
-                    form.submit();
+                message: {
+                    required: true,
                 }
-            });
+            },
+            messages: {
+                name: {
+                    required: 'This field is required',
+                },
+                email: {
+                    required: 'This field is required',
+                    email: 'Enter a valid email',
+                },
+                phone: {
+                    number: 'Please enter a valid phone number.',
+                },
+                subject: {
+                    required: 'This field is required',
+                },
+                message: {
+                    required: 'This field is required',
+                }
+            },
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                $('#' + element.attr('name') + '_error').html(error)
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass('border border-danger');
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass('border border-danger');
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
         });
-    </script>
+    });
+</script>
 @stop
