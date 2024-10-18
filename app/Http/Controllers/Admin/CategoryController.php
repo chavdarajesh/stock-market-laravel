@@ -123,7 +123,7 @@ class CategoryController extends Controller
     public function save(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories,name,NULL,id,deleted_at,NULL',
+            'name' =>  'required|unique:categories,name,NULL,id,deleted_at,NULL',
         ]);
         $Category = new Category();
         $Category->name = $request['name'];
@@ -175,7 +175,7 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:name,name,' . $request->id,
+            'name' => 'required|unique:categories,name,' . $request->id,
         ]);
         $Category = Category::find($request->id);
         if ($Category) {

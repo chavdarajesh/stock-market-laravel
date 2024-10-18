@@ -19,27 +19,33 @@ class CategorySeeder extends Seeder
         //
         $categories = [
             [
-                'name' => 'Exterior',
-                'slug' => Str::slug('Exterior'),
-                'description' => 'Category for exterior designs and elements',
+                'name' => 'Stocks',
+                'slug' => Str::slug('Stocks'),
+                'description' => 'Stocks',
                 'created_at'=>Carbon::now('Asia/Kolkata')
             ],
             [
-                'name' => 'Interior',
-                'slug' => Str::slug('Interior'),
-                'description' => 'Category for interior designs and elements',
+                'name' => 'Economy Outlook',
+                'slug' => Str::slug('Economy Outlook'),
+                'description' => 'Economy Outlook',
                 'created_at'=>Carbon::now('Asia/Kolkata')
             ],
             [
-                'name' => 'Animation',
-                'slug' => Str::slug('Animation'),
-                'description' => 'Category for animations and visual effects',
+                'name' => 'Research',
+                'slug' => Str::slug('Research'),
+                'description' => 'Research',
                 'created_at'=>Carbon::now('Asia/Kolkata')
             ],
             [
-                'name' => 'AR/VR',
-                'slug' => Str::slug('AR/VR'),
-                'description' => 'Category for augmented and virtual reality experiences',
+                'name' => "IPO's",
+                'slug' => Str::slug("IPO's"),
+                'description' => "IPO's",
+                'created_at'=>Carbon::now('Asia/Kolkata')
+            ],
+            [
+                'name' => "Company News",
+                'slug' => Str::slug("Company News"),
+                'description' => 'Company News',
                 'created_at'=>Carbon::now('Asia/Kolkata')
             ],
         ];
