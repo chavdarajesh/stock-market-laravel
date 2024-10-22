@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Blog;
-use App\Models\CareerMessage;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Comment;
@@ -21,10 +20,6 @@ class DashboardController extends Controller
     {
         $data['Total_Project'] = Project::count();
         $data['Total_Category'] = Category::count();
-
-        $data['Total_Career_Message'] = CareerMessage::count();
-        $data['Total_Contact_Messages'] = ContactMessage::count();
-
         return view('admin.dashboard', ['data' => $data]);
     }
 

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\HomeSlider;
 use App\Models\Newsletter;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -14,9 +13,8 @@ class PagesController extends Controller
 
     public function home()
     {
-        $HomeSlider = HomeSlider::where('status', 1)->orderBy('id', 'DESC')->get();
         $Projects = Project::where('status', 1)->orderBy('id', 'DESC')->get();
-        return view('front.pages.home', ['HomeSlider' => $HomeSlider, 'Projects' => $Projects]);
+        return view('front.pages.home', ['Projects' => $Projects]);
     }
     public function about()
     {

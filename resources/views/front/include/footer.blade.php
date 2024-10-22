@@ -18,7 +18,7 @@
  <footer>
      <div class="bg2 p-t-40 p-b-25">
          <div class="container">
-             <div class="row">
+             <div class="d-flex justify-content-between row">
                  <div class="col-lg-4 p-b-20">
                      <div class="size-h-3 flex-s-c">
                          <a href="index.html">
@@ -41,7 +41,7 @@
                      </div>
                  </div>
 
-                 <div class="col-sm-6 col-lg-4 p-b-20">
+                 <div class="col-sm-6 col-lg-4 p-b-20 d-none">
                      <!-- <div class="size-h-3 flex-s-c">
 							<h5 class="f1-m-7 cl0">
 								Popular Posts

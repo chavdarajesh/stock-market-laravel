@@ -32,13 +32,6 @@
             <span class="menu-header-text">Module</span>
         </li>
         <li
-            class="menu-item  {{ $current_route_name == 'admin.homeslider.index' || $current_route_name == 'admin.homeslider.create' || $current_route_name == 'admin.homeslider.edit' || $current_route_name == 'admin.homeslider.view' ? 'active' : '' }}">
-            <a href="{{ route('admin.homeslider.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-calendar-star"></i>
-                <div>HomeSlider</div>
-            </a>
-        </li>
-        <li
             class="menu-item  {{ $current_route_name == 'admin.categorys.index' || $current_route_name == 'admin.categorys.create' || $current_route_name == 'admin.categorys.edit' || $current_route_name == 'admin.categorys.view' ? 'active' : '' }}">
             <a href="{{ route('admin.categorys.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-category-alt"></i>
@@ -51,7 +44,7 @@
                 <i class="menu-icon tf-icons bx bx-list-ul"></i>
                 <div>Projects</div>
             </a>
-        </li>s
+        </li>
         <li class="menu-item {{ $current_route_name == 'admin.contact.messages.index' || $current_route_name == 'admin.contact.settings.index' || $current_route_name == 'admin.contact.messages.view' ? 'open active' : '' }}"
             style="">
             <a href="{{ route('admin.contact.messages.index') }}" class="menu-link menu-toggle">
@@ -74,16 +67,6 @@
                 </li>
             </ul>
         </li>
-
-        <li
-            class="menu-item {{ $current_route_name == 'admin.career.messages.index' || $current_route_name == 'admin.career.messages.view' ? 'active' : '' }}">
-            <a href="{{ route('admin.career.messages.index') }}" class="menu-link">
-                <i class='menu-icon tf-icons bx bxs-contact'></i>
-                <div data-i18n="Without menu">Career Enquiry</div>
-            </a>
-        </li>
-
-
 
         <li class="menu-item {{ $current_route_name == 'admin.newsletters.index' || $current_route_name == 'admin.newsletters.create' || $current_route_name == 'admin.newsletters.edit' || $current_route_name == 'admin.newsletters.view' || $current_route_name == 'admin.newslettermails.index' || $current_route_name == 'admin.newslettermails.create' || $current_route_name == 'admin.newslettermails.edit' || $current_route_name == 'admin.newslettermails.view' ? 'open active' : '' }}"
             style="">

@@ -9,7 +9,7 @@
 <!-- Feature post -->
 <section class="bg0">
     <div class="mx-3 pt-5 px-5 row">
-        <div class="col-md-2 px-0">
+        <div class="col-md-2 px-2">
             <div class="row">
                 <div class="col-sm-12">
 
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8 px-4">
+        <div class="col-md-8 px-2">
             <div class="flex-col-s-c how-bor2 ">
                 <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03 ">
                     <img src="{{ asset('assets/front/images/blog-list-01.jpg') }}" alt="IMG">
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <div class="col-md-2 px-0">
+        <div class="col-md-2 px-2">
             <div class="row ">
                 <div class="col-sm-12">
                     <div class="p-b-53">

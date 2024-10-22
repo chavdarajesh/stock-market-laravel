@@ -118,7 +118,7 @@ $social_youtube_url = SiteSetting::getSiteSettings('social_youtube_url');
 
         <!-- Menu Mobile -->
         <div class="menu-mobile">
-            <ul class="topbar-mobile">
+            <!-- <ul class="topbar-mobile">
                 <li class="left-topbar">
                     <span class="left-topbar-item flex-wr-s-c">
                         <span>
@@ -172,7 +172,7 @@ $social_youtube_url = SiteSetting::getSiteSettings('social_youtube_url');
                         <span class="fab fa-youtube"></span>
                     </a>
                 </li>
-            </ul>
+            </ul> -->
 
             <ul class="main-menu-m">
                 <li>
