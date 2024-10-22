@@ -1,19 +1,19 @@
 @extends('admin.layouts.main')
-@section('title', 'Category List')
+@section('title', 'News List')
 @section('css')
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/dataTables.bootstrap5.min.css') }}">
 @stop
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">News /</span> All News</h4>
+
         <div class="row">
             <div class="col-md-12">
-
                 <div class="card">
                     <div class="d-flex justify-content-between">
-                        <h5 class="card-header">Category</h5>
+                        <h5 class="card-header">All News</h5>
                         <div class="card-header d-flex align-items-center">
-                            <a href="{{ route('admin.categorys.create') }}" class="btn btn-primary add-btn">Create Category</a>
+                            <a href="{{ route('admin.news.create') }}" class="btn btn-primary add-btn">Create News</a>
                         </div>
                     </div>
                     <div class="table-responsive text-nowrap p-3">
@@ -21,7 +21,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Title</th>
+                                    <th class="text-center">Category</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Created At</th>
                                     <th class="text-center">Actions</th>
@@ -35,8 +36,11 @@
     </div>
 @stop
 @section('js')
+
     <script src="{{ asset('assets/admin/js/jquery.dataTables.min.js') }}"></script>
+
     <script src="{{ asset('assets/admin/js/dataTables.bootstrap5.min.js') }}"></script>
+
 
     <script>
         $.ajaxSetup({
@@ -51,13 +55,16 @@
                 order: [0, 'DESC'],
                 pageLength: 10,
                 searching: true,
-                ajax: "{{ route('admin.categorys.index') }}",
+                ajax: "{{ route('admin.news.index') }}",
                 columns: [{
                         data: 'id',
                         className: "text-center",
                     },
                     {
-                        data: 'name'
+                        data: 'title'
+                    },
+                    {
+                        data: 'category'
                     },
                     {
                         data: 'status',
@@ -83,7 +90,7 @@
                 var id = $(this).data('id');
                 $.ajax({
                     type: "POST",
-                    url: "{{ route('admin.categorys.status.toggle') }}",
+                    url: "{{ route('admin.news.status.toggle') }}",
                     data: {
                         "_token": "{{ csrf_token() }}",
                         'status': status,

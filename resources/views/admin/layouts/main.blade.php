@@ -1,7 +1,6 @@
 @php
-     use App\Models\SiteSetting;
-    $favicon = SiteSetting::getSiteSettings('favicon');
-    $loader = SiteSetting::getSiteSettings('loader');
+use App\Models\SiteSetting;
+$favicon = SiteSetting::getSiteSettings('favicon');
 @endphp
 
 <!DOCTYPE html>
@@ -15,13 +14,11 @@
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <!-- Favicon -->
     <title>{{ env('APP_NAME', 'Laravel App') }} Admin | @yield('title')</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ isset($favicon) && isset($favicon->value) && $favicon != null && $favicon->value != '' ? asset($favicon->value) : asset('custom-assets/admin/siteimages/logo/favicon.png') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ isset($favicon) && isset($favicon->value) && $favicon != null && $favicon->value != '' ? asset($favicon->value) : asset('custom-assets/default/admin/images/siteimages/logo/favicon.png') }}" />
     <link rel="icon" type="image/png" sizes="32x32"
-        href="{{ isset($favicon) && isset($favicon->value) && $favicon != null && $favicon->value != '' ? asset($favicon->value) : asset('custom-assets/admin/siteimages/logo/favicon.png') }}" />
+        href="{{ isset($favicon) && isset($favicon->value) && $favicon != null && $favicon->value != '' ? asset($favicon->value) : asset('custom-assets/default/admin/images/siteimages/logo/favicon.png') }}" />
     <link rel="icon" type="image/png" sizes="16x16"
-        href="{{ isset($favicon) && isset($favicon->value) && $favicon != null && $favicon->value != '' ? asset($favicon->value) : asset('custom-assets/admin/siteimages/logo/favicon.png') }}" />
-    {{-- <link rel="manifest" href="{{ asset('assets/front/images/favicons/site.webmanifest') }}" /> --}}
-    <meta name="description" content="@yield('description')" />
+        href="{{ isset($favicon) && isset($favicon->value) && $favicon != null && $favicon->value != '' ? asset($favicon->value) : asset('custom-assets/default/admin/images/siteimages/logo/favicon.png') }}" />
     @include('admin.layouts.head')
 
 </head>
@@ -31,7 +28,6 @@
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <!-- Menu -->
-
             @include('admin.include.sidebar')
             <div class="layout-page">
                 @include('admin.include.header')
@@ -40,9 +36,17 @@
                 </div>
                 @include('admin.include.footer')
             </div>
-            @include('admin.layouts.footer')
 
+            <div class="content-backdrop fade"></div>
 
+            <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+    </div>
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+    @include('admin.layouts.footer')
 </body>
 
 </html>

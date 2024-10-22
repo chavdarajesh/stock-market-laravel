@@ -162,7 +162,7 @@ class UserController extends Controller
         $User->other_referral_code = $request['referral_code'] ? $request['referral_code'] : '';
 
         if ($request->profileimage) {
-            $folderPath = public_path('custom-assets/admin/uplode/images/users/profileimage/' . $request->id . '/');
+            $folderPath = public_path('custom-assets/upload/admin/images/users/profileimage/' . $request->id . '/');
             if (!file_exists($folderPath)) {
                 mkdir($folderPath, 0777, true);
             }
@@ -170,7 +170,7 @@ class UserController extends Controller
             $imageoriginalname = str_replace(" ", "-", $file->getClientOriginalName());
             $imageName = rand(1000, 9999) . time() . $imageoriginalname;
             $file->move($folderPath, $imageName);
-            $User->profileimage = 'custom-assets/admin/uplode/images/users/profileimage/' . $request->id . '/' . $imageName;
+            $User->profileimage = 'custom-assets/upload/admin/images/users/profileimage/' . $request->id . '/' . $imageName;
             if ($request->old_profileimage && file_exists(public_path($request->old_profileimage))) {
                 unlink(public_path($request->old_profileimage));
             }
@@ -229,7 +229,7 @@ class UserController extends Controller
             $User->dateofbirth = $request['dateofbirth'];
 
             if ($request->profileimage) {
-                $folderPath = public_path('custom-assets/admin/uplode/images/users/profileimage/' . $request->id . '/');
+                $folderPath = public_path('custom-assets/upload/admin/images/users/profileimage/' . $request->id . '/');
                 if (!file_exists($folderPath)) {
                     mkdir($folderPath, 0777, true);
                 }
@@ -237,7 +237,7 @@ class UserController extends Controller
                 $imageoriginalname = str_replace(" ", "-", $file->getClientOriginalName());
                 $imageName = rand(1000, 9999) . time() . $imageoriginalname;
                 $file->move($folderPath, $imageName);
-                $User->profileimage = 'custom-assets/admin/uplode/images/users/profileimage/' . $request->id . '/' . $imageName;
+                $User->profileimage = 'custom-assets/upload/admin/images/users/profileimage/' . $request->id . '/' . $imageName;
                 if ($request->old_profileimage && file_exists(public_path($request->old_profileimage))) {
                     unlink(public_path($request->old_profileimage));
                 }

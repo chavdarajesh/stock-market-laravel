@@ -60,7 +60,7 @@ class ProfileController extends Controller
         $user->dateofbirth = $request->dateofbirth;
 
         if ($request->profileimage) {
-            $folderPath = public_path('custom-assets/admin/uplode/images/users/profileimage/' . Auth::user()->id . '/');
+            $folderPath = public_path('custom-assets/upload/admin/images/users/profileimage/' . Auth::user()->id . '/');
             if (!file_exists($folderPath)) {
                 mkdir($folderPath, 0777, true);
             }
@@ -68,7 +68,7 @@ class ProfileController extends Controller
             $imageoriginalname = str_replace(" ", "-", $file->getClientOriginalName());
             $imageName = rand(1000, 9999) . time() . $imageoriginalname;
             $file->move($folderPath, $imageName);
-            $user->profileimage = 'custom-assets/admin/uplode/images/users/profileimage/' . Auth::user()->id . '/' . $imageName;
+            $user->profileimage = 'custom-assets/upload/admin/images/users/profileimage/' . Auth::user()->id . '/' . $imageName;
             if ($request->old_profileimage && file_exists(public_path($request->old_profileimage))) {
                 unlink(public_path($request->old_profileimage));
             }

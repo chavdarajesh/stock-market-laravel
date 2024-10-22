@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\News;
 use App\Models\Newsletter;
-use App\Models\Project;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -13,84 +14,59 @@ class PagesController extends Controller
 
     public function home()
     {
-        $Projects = Project::where('status', 1)->orderBy('id', 'DESC')->get();
-        return view('front.pages.home', ['Projects' => $Projects]);
+        $newsItems = News::orderBy('updated_at', 'desc')->take(4)->get();
+        $latestNewsIds = $newsItems->pluck('id')->toArray();
+
+        $categoryStocksNewsItems = News::where('category_id', 1)
+            ->whereNotIn('id', $latestNewsIds)
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        $categoryEconomyOutlookNews = News::where('category_id', 2)
+            ->whereNotIn('id', $latestNewsIds)
+            ->orderBy('updated_at', 'desc')
+            ->take(11)
+            ->get();
+
+        $firstcategoryEconomyOutlookNews = $categoryEconomyOutlookNews->shift();
+        $othercategoryEconomyOutlookNews = $categoryEconomyOutlookNews->take(10);
+
+        $categoryResearchNewsItems = News::where('category_id', 3)
+            ->whereNotIn('id', $latestNewsIds)
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        $categoryIPONews = News::where('category_id', 4)
+            ->whereNotIn('id', $latestNewsIds)
+            ->orderBy('updated_at', 'desc')
+            ->take(11)
+            ->get();
+
+        $firstcategoryIPONews = $categoryIPONews->shift();
+        $othercategoryIPONews = $categoryIPONews->take(10);
+
+
+        $categoryCompanyNewsNewsItems = News::where('category_id', 5)
+            ->whereNotIn('id', $latestNewsIds)
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        return view('front.pages.home', compact('newsItems', 'categoryStocksNewsItems', 'firstcategoryEconomyOutlookNews', 'othercategoryEconomyOutlookNews', 'categoryResearchNewsItems', 'firstcategoryIPONews', 'othercategoryIPONews', 'categoryCompanyNewsNewsItems'));
     }
-    public function about()
+
+    public function newsDetails($slug)
     {
-        return view('front.pages.about');
-    }
-
-    public function term_and_condition()
-    {
-        return view('front.pages.term_and_condition');
-    }
-    public function privacy_policy()
-    {
-        return view('front.pages.privacy_policy');
-    }
-
-    public function newsletterSave(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-        ]);
-
-        $Newsletter = Newsletter::where('email', $request->email)->where('status', 1)->first();
-        if ($Newsletter) {
-            return redirect()->back()->with('message', 'Thank you for subscribing to our newsletter! Stay tuned for the latest updates and exciting news.');
-        }
-        $Newsletter = Newsletter::where('email', $request->email)->where('status', 0)->first();
-        if ($Newsletter) {
-            $Newsletter->status = 1;
-            $Newsletter->save();
-            return redirect()->back()->with('message', 'Thank you for subscribing to our newsletter! Stay tuned for the latest updates and exciting news.');
-        }
-
-        $Newsletter = new Newsletter();
-        $Newsletter->email = $request['email'];
-        $Newsletter->save();
-
-        if ($Newsletter) {
-            return redirect()->back()->with('message', 'Thank you for subscribing to our newsletter! Stay tuned for the latest updates and exciting news.');
+        if ($slug) {
+            $News = News::where('status', 1)->where('slug', $slug)->first();
+            if ($News) {
+                $latestNews = News::where('id', '!=', $News->id)->where('status', 1)->orderBy('id', 'DESC')->limit(3)->get();
+                $categorys = Category::where('status', 1)->where('id', '!=', $News->category_id)->orderBy('id', 'DESC')->limit(7)->get();
+                return view('front.news.details', ['News' => $News, 'latestNews' => $latestNews, 'categorys' => $categorys]);
+            } else {
+                return redirect()->back()->with('error', 'Somthing Went Wrong..!');
+            }
         } else {
-            return redirect()->back()->with('error', 'Somthing Went Wrong..');
-        }
-    }
-
-
-    public function newsletterUnSubscribe(Request $request)
-    {
-        $email = decrypt($request->email);
-        $Newsletter = Newsletter::where('email', $email)->first();
-        if (!$Newsletter) {
-            return redirect()->route('front.home')->with('error', 'Not Subscribed..');
-        }
-        if ($Newsletter && $Newsletter->status == 1) {
-            $Newsletter->status = 0;
-            $Newsletter->save();
-            return redirect()->route('front.home')->with('message', 'UnSubscribed Sucssesfully!..');
-        }
-        return redirect()->route('front.home')->with('error', 'Already UnSubscribed..');
-    }
-
-    public function projectDetails($id)
-    {
-        $Project = Project::find($id);
-        if ($Project) {
-            return view('front.project.project-details', ['Project' => $Project]);
-        } else {
-            return redirect()->back()->with('error', 'Project Not Found..!');
-        }
-    }
-
-    public function projectDetailsArVr($id)
-    {
-        $Project = Project::find($id);
-        if ($Project) {
-            return view('front.project.project-details-arvr', ['Project' => $Project]);
-        } else {
-            return redirect()->back()->with('error', 'Project Not Found..!');
+            return redirect()->back()->with('error', 'News Not Found..!');
         }
     }
 }

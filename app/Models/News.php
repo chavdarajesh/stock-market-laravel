@@ -6,28 +6,32 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class News extends Model
 {
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'name',
-        'status',
+        'title',
         'description',
         'image',
+        'author',
+        'published_date',
+        'status',
+        'category_id',
+        'user_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function news()
+    public function category()
     {
-        return $this->belongsTo(News::class);
+        return $this->belongsTo(Category::class);
     }
 
-    public function getCategory()
+    public function user()
     {
-        return Category::where('status', 1)->get();
+        return $this->belongsTo(User::class);
     }
 
 }

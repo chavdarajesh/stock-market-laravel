@@ -1,16 +1,22 @@
  <!-- ======= Footer ======= -->
  @php $current_route_name=Route::currentRouteName() @endphp
  @php
+
  use App\Models\Admin\ContactSetting;
  $ContactSetting = ContactSetting::get_contact_us_details();
+
  use App\Models\SiteSetting;
+
+ $about_site_footer = SiteSetting::getSiteSettings('about_site_footer');
+
+ $social_twitter_url = SiteSetting::getSiteSettings('social_twitter_url');
  $social_facebook_url = SiteSetting::getSiteSettings('social_facebook_url');
  $social_linkedin_url = SiteSetting::getSiteSettings('social_linkedin_url');
  $social_instagram_url = SiteSetting::getSiteSettings('social_instagram_url');
  $social_youtube_url = SiteSetting::getSiteSettings('social_youtube_url');
+
  $footerLogo = SiteSetting::getSiteSettings('footer_logo');
- use App\Models\Category;
- $Category = Category::getCategory();
+
  @endphp
 
 
@@ -21,24 +27,20 @@
              <div class="d-flex justify-content-between row">
                  <div class="col-lg-4 p-b-20">
                      <div class="size-h-3 flex-s-c">
-                         <a href="index.html">
-                             <img class="max-s-full" src="{{ asset('assets/front/images/icons/logo-02.png') }}" alt="LOGO">
+                         <a href="{{ route('front.home') }}">
+                             <img class="max-s-full" src="{{ isset($footerLogo) && isset($footerLogo->value) && $footerLogo != null && $footerLogo->value != '' ? asset($footerLogo->value) : asset('custom-assets/default/admin/images/siteimages/logo/footer-logo.png') }}" alt="LOGO">
                          </a>
                      </div>
-
+                     @if(isset($about_site_footer) &&
+                     isset($about_site_footer->value) &&
+                     $about_site_footer != null &&
+                     $about_site_footer->value != '')
                      <div>
                          <p class="f1-s-1 cl11 p-b-16">
-                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor magna eget
-                             elit efficitur, at accumsan sem placerat. Nulla tellus libero, mattis nec molestie at,
-                             facilisis ut turpis. Vestibulum dolor metus, tincidunt eget odio
+                             {{$about_site_footer->value}}
                          </p>
-
-                         <p class="f1-s-1 cl11 p-b-16">
-                             Any questions? Call us on (+1) 96 716 6879
-                         </p>
-
-
                      </div>
+                     @endif
                  </div>
 
                  <div class="col-sm-6 col-lg-4 p-b-20 d-none">
@@ -51,7 +53,7 @@
 						<ul>
 							<li class="flex-wr-sb-s p-b-20">
 								<a href="#" class="size-w-4 wrap-pic-w hov1 trans-03">
-									<img src="{{ asset('assets/front/images/popular-post-01.jpg" alt="IMG">
+									<img src="{{ asset('assets/front/images/popular-post-01.jpg') }}" alt="IMG">
 								</a>
 
 								<div class="size-w-5">
@@ -69,7 +71,7 @@
 
 							<li class="flex-wr-sb-s p-b-20">
 								<a href="#" class="size-w-4 wrap-pic-w hov1 trans-03">
-									<img src="{{ asset('assets/front/images/popular-post-02.jpg" alt="IMG">
+									<img src="{{ asset('assets/front/images/popular-post-02.jpg') }}" alt="IMG">
 								</a>
 
 								<div class="size-w-5">
@@ -87,7 +89,7 @@
 
 							<li class="flex-wr-sb-s p-b-20">
 								<a href="#" class="size-w-4 wrap-pic-w hov1 trans-03">
-									<img src="{{ asset('assets/front/images/popular-post-03.jpg" alt="IMG">
+									<img src="{{ asset('assets/front/images/popular-post-03.jpg') }}" alt="IMG">
 								</a>
 
 								<div class="size-w-5">
@@ -113,50 +115,91 @@
 						</div> -->
 
                      <ul class="m-t--12 pt-4">
+                         @if($ContactSetting ['email'])
                          <li class="how-bor1 p-rl-5 p-tb-10">
-                             <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
-                                 Email : test@gmail.com
+                             <a target="_blank" href="mailto:{{ $ContactSetting['email'] ? $ContactSetting['email'] : '' }}" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+                                 Email : {{$ContactSetting ['email']}}
                              </a>
                          </li>
+                         @endif
+                         @if($ContactSetting ['phone'])
 
                          <li class="how-bor1 p-rl-5 p-tb-10">
-                             <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
-                                 Contact : 88888888888
+                             <a target="_blank" href="tel:{{ $ContactSetting['phone'] ? $ContactSetting['phone'] : '' }}" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+                                 Contact : {{$ContactSetting ['phone']}}
                              </a>
                          </li>
+                         @endif
+                         @if($ContactSetting ['location'])
 
                          <li class="how-bor1 p-rl-5 p-tb-10">
-                             <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
-                                 Address : Street Style 122545
+                             <a href="javascrip:void(0);" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+                                 Address : {{$ContactSetting ['location']}}
                              </a>
                          </li>
+                         @endif
 
+                         @if (
+                         (isset($social_facebook_url) && isset($social_facebook_url->value)) ||
+                         (isset($social_youtube_url) && isset($social_youtube_url->value)) ||
+                         (isset($social_linkedin_url) && isset($social_linkedin_url->value)) ||
+                         (isset($social_twitter_url) && isset($social_twitter_url->value)) ||
+                         (isset($social_instagram_url) && isset($social_instagram_url->value)))
                          <div class="mt-3">
                              <h5 class="f1-m-7 cl0">
                                  Follow Us
                              </h5>
                          </div>
                          <div class="p-t-15">
-                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                             @if (isset($social_facebook_url) &&
+                             isset($social_facebook_url->value) &&
+                             $social_facebook_url != null &&
+                             $social_facebook_url->value != '')
+                             <a target="_blank"
+                                 href="{{ isset($social_facebook_url) && isset($social_facebook_url->value) && $social_facebook_url != null && $social_facebook_url->value != '' ? $social_facebook_url->value : 'javascript:void(0);' }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
                                  <span class="fab fa-facebook-f"></span>
                              </a>
-
-                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                             @endif
+                             @if (isset($social_twitter_url) &&
+                             isset($social_twitter_url->value) &&
+                             $social_twitter_url != null &&
+                             $social_twitter_url->value != '')
+                             <a target="_blank"
+                                 href="{{ isset($social_twitter_url) && isset($social_twitter_url->value) && $social_twitter_url != null && $social_twitter_url->value != '' ? $social_twitter_url->value : 'javascript:void(0);' }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
                                  <span class="fab fa-twitter"></span>
                              </a>
-
-                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
-                                 <span class="fab fa-pinterest-p"></span>
+                             @endif
+                             @if (isset($social_linkedin_url) &&
+                             isset($social_linkedin_url->value) &&
+                             $social_linkedin_url != null &&
+                             $social_linkedin_url->value != '')
+                             <a target="_blank"
+                                 href="{{ isset($social_linkedin_url) && isset($social_linkedin_url->value) && $social_linkedin_url != null && $social_linkedin_url->value != '' ? $social_linkedin_url->value : 'javascript:void(0);' }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                 <span class="fab fa-linkedin"></span>
                              </a>
+                             @endif
+                             @if (isset($social_instagram_url) &&
+                             isset($social_instagram_url->value) &&
+                             $social_instagram_url != null &&
+                             $social_instagram_url->value != '')
 
-                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
-                                 <span class="fab fa-vimeo-v"></span>
+                             <a target="_blank"
+                                 href="{{ isset($social_instagram_url) && isset($social_instagram_url->value) && $social_instagram_url != null && $social_instagram_url->value != '' ? $social_instagram_url->value : 'javascript:void(0);' }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                                 <span class="fab fa-instagram"></span>
                              </a>
+                             @endif
+                             @if (isset($social_youtube_url) &&
+                             isset($social_youtube_url->value) &&
+                             $social_youtube_url != null &&
+                             $social_youtube_url->value != '')
 
-                             <a href="#" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+                             <a target="_blank"
+                                 href="{{ isset($social_youtube_url) && isset($social_youtube_url->value) && $social_youtube_url != null && $social_youtube_url->value != '' ? $social_youtube_url->value : 'javascript:void(0);' }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
                                  <span class="fab fa-youtube"></span>
                              </a>
+                             @endif
                          </div>
+                         @endif
 
                      </ul>
                  </div>
@@ -176,15 +219,7 @@
          <div class="container size-h-4 flex-c-c p-tb-15">
              <span class="f1-s-1 cl0 txt-center">
                  Copyright &copy;
-                 <script>
-                     document.write(new Date().getFullYear());
-                 </script>
-
-                 All rights reserved | This template is made with
-
-                 <i class="fa fa-heart" aria-hidden="true"></i> by
-
-                 <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                 <?php echo date('Y'); ?> All rights reserved | <a href="{{ route('front.home') }}"> {{ env('APP_NAME', 'Laravel App') }}</a>
                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
              </span>
          </div>

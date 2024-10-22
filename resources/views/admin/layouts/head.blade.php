@@ -31,4 +31,10 @@
 <script src="{{ asset('assets/admin/js/config.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/toastr.min.css') }}">
 
+<style>
+    div#cke_notifications_area_description,div#cke_notifications_area_content {
+        display: none !important;
+    }
+</style>
 @yield('css')
+

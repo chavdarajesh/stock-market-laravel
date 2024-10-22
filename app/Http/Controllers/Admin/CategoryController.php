@@ -95,7 +95,7 @@ class CategoryController extends Controller
                     </div>';
                 $data_arr[] = array(
                     "id" => '<strong>' . $row->id . '</strong>',
-                    "name" => $row->name,
+                    "name" => '<a href="' . route("admin.news.cat-index", $row->id) . '">'.$row->name.'</a>',
                     "status" => ' <div class="d-flex justify-content-center align-items-center form-check form-switch"><input data-id="' . $row->id . '" style="width: 60px;height: 25px;" class="form-check-input status-toggle" type="checkbox" id="flexSwitchCheckDefault" ' . ($row->status ? "checked" : "") . '  ></div>',
                     "created_at" => $row->created_at ? Carbon::parse($row->created_at)->setTimezone('Asia/Kolkata')->toDateTimeString() : '',
                     "actions" => $html,
@@ -127,23 +127,8 @@ class CategoryController extends Controller
         ]);
         $Category = new Category();
         $Category->name = $request['name'];
-        $Category->description = $request['description'];
         $Category->slug = Str::slug($request['name']);
         $Category->status = 1;
-        if ($request->image) {
-            if ($request->old_image && file_exists(public_path($request->old_image))) {
-                unlink(public_path($request->old_image));
-            }
-            $folderPath = public_path('custom-assets/admin/uplode/images/category/images/');
-            if (!file_exists($folderPath)) {
-                mkdir($folderPath, 0777, true);
-            }
-            $file = $request->file('image');
-            $imageoriginalname = str_replace(" ", "-", $file->getClientOriginalName());
-            $imageName = rand(1000, 9999) . time() . $imageoriginalname;
-            $file->move($folderPath, $imageName);
-            $Category->image = 'custom-assets/admin/uplode/images/category/images/' . $imageName;
-        }
         $Category = $Category->save();
         if ($Category) {
             return redirect()->route('admin.categorys.index')->with('message', 'Category Added Sucssesfully..');
@@ -181,21 +166,6 @@ class CategoryController extends Controller
         if ($Category) {
             $Category->name = $request['name'];
             $Category->slug = Str::slug($request['name']);
-            $Category->description = $request['description'];
-            if ($request->image) {
-                $folderPath = public_path('custom-assets/admin/uplode/images/category/images/');
-                if (!file_exists($folderPath)) {
-                    mkdir($folderPath, 0777, true);
-                }
-                $file = $request->file('image');
-                $imageoriginalname = str_replace(" ", "-", $file->getClientOriginalName());
-                $imageName = rand(1000, 9999) . time() . $imageoriginalname;
-                $file->move($folderPath, $imageName);
-                $Category->image = 'custom-assets/admin/uplode/images/category/images/' . $imageName;
-                if ($request->old_image && file_exists(public_path($request->old_image))) {
-                    unlink(public_path($request->old_image));
-                }
-            }
             $Category = $Category->update();
             if ($Category) {
                 return redirect()->route('admin.categorys.index')->with('message', 'Category Updated Sucssesfully..');
@@ -211,9 +181,6 @@ class CategoryController extends Controller
     {
         if ($id) {
             $Category = Category::find($id);
-            if ($Category->image && file_exists(public_path($Category->image))) {
-                unlink(public_path($Category->image));
-            }
             $Category = $Category->delete();
             if ($Category) {
                 return redirect()->route('admin.categorys.index')->with('message', 'Category Deleted Sucssesfully..');

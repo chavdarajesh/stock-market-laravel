@@ -28,18 +28,36 @@ class SiteSettingSeeder extends Seeder
                 'created_at' => Carbon::now('Asia/Kolkata')
             ],
             [
+                'key' => 'footer_logo',
+                'value' => null,
+                'title' => 'Footer Logo',
+                'description' => null,
+                'status' => 1,
+                'order' => 2,
+                'created_at' => Carbon::now('Asia/Kolkata'),
+            ],
+            [
                 'key' => 'favicon',
                 'value' => null,
                 'title' => 'Favicon',
+                'description' => null,
+                'status' => 1,
+                'order' => 2,
+                'created_at' => Carbon::now('Asia/Kolkata')
+            ],
+            [
+                'key' => 'home_ads_banner',
+                'value' => null,
+                'title' => 'Home Page Ads Banner',
                 'description' => null,
                 'status' => 1,
                 'order' => 3,
                 'created_at' => Carbon::now('Asia/Kolkata')
             ],
             [
-                'key' => 'loader',
+                'key' => 'about_site_footer',
                 'value' => null,
-                'title' => 'Loader',
+                'title' => 'About Site Footer',
                 'description' => null,
                 'status' => 1,
                 'order' => 4,
@@ -82,14 +100,14 @@ class SiteSettingSeeder extends Seeder
                 'created_at' => Carbon::now('Asia/Kolkata')
             ],
             [
-                'key' => 'career_enquiry_email',
-                'value' => null,
-                'title' => 'Enquiry Email',
+                'key' => 'social_twitter_url',
+                'value' => 'https://youtube.com',
+                'title' => 'Twitter URL',
                 'description' => null,
                 'status' => 1,
-                'order' => 14,
+                'order' => 13,
                 'created_at' => Carbon::now('Asia/Kolkata')
-            ],
+            ]
         ];
         SiteSetting::insert($Faqs);
     }

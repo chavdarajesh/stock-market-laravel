@@ -15,7 +15,7 @@
                             @csrf
                             <input type="hidden" name="id" value="{{ $ContactSetting ? $ContactSetting['id'] : 1 }}">
                             <div class="row">
-                                <div class="mb-3 col-md-12">
+                                <!-- <div class="mb-3 col-md-12">
                                     <label for="map_iframe" class="form-label">Map IFrame</label>
                                     <textarea rows="5" class="form-control @error('map_iframe') is-invalid @enderror" type="text" id="map_iframe"
                                         name="map_iframe" autofocus>{{ $ContactSetting ? $ContactSetting['map_iframe'] : old('map_iframe') }}</textarea>
@@ -24,7 +24,7 @@
                                             {{ $message }}
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="mb-3 col-md-12">
                                     <label for="location" class="form-label">Location</label>
                                     <textarea class="form-control @error('location') is-invalid @enderror" type="text" id="location" name="location">{{ $ContactSetting ? $ContactSetting['location'] : old('location') }}</textarea>

@@ -21,31 +21,26 @@ class CategorySeeder extends Seeder
             [
                 'name' => 'Stocks',
                 'slug' => Str::slug('Stocks'),
-                'description' => 'Stocks',
                 'created_at'=>Carbon::now('Asia/Kolkata')
             ],
             [
                 'name' => 'Economy Outlook',
                 'slug' => Str::slug('Economy Outlook'),
-                'description' => 'Economy Outlook',
                 'created_at'=>Carbon::now('Asia/Kolkata')
             ],
             [
                 'name' => 'Research',
                 'slug' => Str::slug('Research'),
-                'description' => 'Research',
                 'created_at'=>Carbon::now('Asia/Kolkata')
             ],
             [
                 'name' => "IPO's",
                 'slug' => Str::slug("IPO's"),
-                'description' => "IPO's",
                 'created_at'=>Carbon::now('Asia/Kolkata')
             ],
             [
                 'name' => "Company News",
                 'slug' => Str::slug("Company News"),
-                'description' => 'Company News',
                 'created_at'=>Carbon::now('Asia/Kolkata')
             ],
         ];
