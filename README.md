@@ -4,13 +4,13 @@
 
 ## Installation
 
-Clone the repository in xampp folder (make sure that php and composer installed on system) 
+Clone the repository in xampp folder (make sure that php and composer installed on system)
 
-    https://github.com/Yash-devloper/markthemarket_laravel.git
+https://github.com/chavdarajesh/stock-market-laravel.git
 
 Switch to the repo folder
 
-    cd markthemarket_laravel
+    cd stock-market-laravel
 
 Install all the dependencies using composer
 
@@ -41,25 +41,25 @@ You can open admin panel at http://localhost:8000/admin/login
 
 **TL;DR command list**
 
-    git clone git@github.com:gothinkster/laravel-realworld-example-app.git
-    cd laravel-realworld-example-app
+    git clone https://github.com/chavdarajesh/stock-market-laravel.git
+    cd stock-market-laravel
     composer install
     cp .env.example .env
     php artisan key:generate
-    
+
 **Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
 
     php artisan migrate
     php artisan db:seed
     php artisan serve
 
-----------
+---
 
 # Code overview
 
 ## Environment variables
 
-- `.env` - Environment variables can be set in this file
+-   `.env` - Environment variables can be set in this file
 
 DB_DATABASE=your-database-name
 DB_USERNAME=your-database-username
@@ -74,15 +74,13 @@ MAIL_ENCRYPTION=mail-encryption
 MAIL_FROM_ADDRESS=mail-from-address
 MAIL_FROM_NAME="${APP_NAME}"
 
+**_Note_** : You can quickly set the database information and other variables in this file and have the application fully working.
 
-***Note*** : You can quickly set the database information and other variables in this file and have the application fully working.
-
- 
 # Authentication
- 
- Admin Credentials
 
- Email => admin@gmail.com
- Password => Admin@123
+Admin Credentials
 
-----------
+Email => admin@gmail.com
+Password => Admin@123
+
+---
