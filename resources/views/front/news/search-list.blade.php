@@ -1,5 +1,5 @@
 @extends('front.layouts.main')
-@section('title', 'News Details')
+@section('title', 'Search News : '.$search)
 @section('css')
 
 @stop
@@ -17,53 +17,69 @@
         </div>
     </form>
 </div>
+
 <!-- Page heading -->
-<div class="container p-t-4 p-b-11">
+<div class="container p-t-4 p-b-40">
     <h2 class="f1-l-1 cl2">
-        News Details
+        News Search : {{$search}}
     </h2>
 </div>
 
-<section class="bg0 p-b-140 p-t-10">
+<!-- Post -->
+<section class="bg0 p-b-55">
     <div class="container">
         <div class="row justify-content-center">
 
-            <div class="col-md-10 col-lg-8 p-b-30">
-                @if($News)
+            <div class="col-md-10 col-lg-8 p-b-80">
+                @if (!$News->isEmpty())
                 <div class="p-r-10 p-r-0-sr991">
-                    <!-- Blog Detail -->
-                    <div class="p-b-70">
-                        <a href="{{ route('front.news.category.list', ['slug' => $News->category->slug]) }}" class="f1-s-10 cl2 hov-cl10 trans-03 text-uppercase">
-                            {{$News->category->name}}
-                        </a>
+                    <div class="m-t--40 p-b-40">
+                        <!-- Item post -->
+                        @foreach ($News as $New)
+                        <div class="flex-wr-sb-s p-t-40 p-b-15 how-bor2">
+                            <a href="{{ route('front.news.details', ['slug' => $New->slug]) }}" class="size-w-8 wrap-pic-w hov1 trans-03 w-full-sr575 m-b-25">
+                                <img style="max-height: 260px;" src="{{ $New && isset($New->image) && $New->image ? asset($New->image) : asset('custom-assets/front/placeholder/dummy-image-square.jpg') }}" alt="IMG">
+                            </a>
 
-                        <h3 class="f1-l-3 cl2 p-b-16 p-t-11 respon2">
-                            {{$News->title}}
-                        </h3>
+                            <div class="size-w-9 w-full-sr575 m-b-25">
+                                <h5 class="p-b-12">
+                                    <a href="{{ route('front.news.details', ['slug' => $New->slug]) }}" class="f1-l-1 cl2 hov-cl10 trans-03 respon2">
+                                        {{ $New && $New->title ? (strlen($New->title) > 60 ? substr($New->title, 0, 60) . '..' : $New->title) : '' }}
+                                    </a>
+                                </h5>
 
-                        <div class="flex-wr-s-s p-b-40">
-                            <span class="f1-s-3 cl8 m-r-15">
-                                <a href="javascript:void(0);" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                    by {{$News->user->name}}
+                                <div class="cl8 p-b-18">
+                                    <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                        by {{$New->user->name}}
+                                    </a>
+
+                                    <span class="f1-s-3 m-rl-3">
+                                        -
+                                    </span>
+
+                                    <span class="f1-s-3">
+                                        {{ $New && $New->published_date ? \Carbon\Carbon::parse($New->published_date)->format('d-M-Y') : '' }}
+                                    </span>
+                                </div>
+
+                                <p class="f1-s-1 cl6 p-b-24">
+                                    @php
+                                    echo strlen($New->description) > 120 ? substr(strip_tags($New->description), 0, 120) . '..' : strip_tags($New->description);
+                                    @endphp </p>
+
+                                <a href="{{ route('front.news.details', ['slug' => $New->slug]) }}" class="f1-s-1 cl9 hov-cl10 trans-03">
+                                    Read More
+                                    <i class="m-l-2 fa fa-long-arrow-alt-right"></i>
                                 </a>
-
-                                <span class="m-rl-3">-</span>
-
-                                <span>
-                                    {{ $News && $News->published_date ? \Carbon\Carbon::parse($News->published_date)->format('d-M-Y') : '' }}
-
-                                </span>
-                            </span>
+                            </div>
                         </div>
-
-                        <div class="wrap-pic-max-w p-b-30">
-                            <img src="{{ $News && isset($News->image) && $News->image ? asset($News->image) : asset('custom-assets/front/placeholder/dummy-image-square.jpg') }}" alt="IMG">
-                        </div>
-
-                        <p class="f1-s-11 cl6 p-b-25">
-                            {!!$News->description!!}
-                        </p>
+                        @endforeach
                     </div>
+
+                    {{ $News->links('vendor.pagination.bootstrap-4') }}
+                    <!-- <a href="#" class="flex-c-c size-a-13 bo-all-1 bocl11 f1-m-6 cl6 hov-btn1 trans-03">
+                        Load More
+                    </a> -->
                 </div>
                 @else
                 <a href="{{route('front.home')}}" class="f1-s-10 cl2 hov-cl10 trans-03 text-uppercase">
@@ -123,7 +139,6 @@
                         </ul>
                     </div>
                     @endif
-
                     <!-- Popular Posts -->
                     @if (!$latestNews->isEmpty())
                     <div class="p-b-30">

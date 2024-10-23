@@ -148,7 +148,6 @@
     </h5>
     <div class="mx-3 pt-5 px-2 px-lg-5 mx-lg-5 row d-flex justify-content-center ">
         <div class="d-flex justify-content-between ">
-
             @foreach($categoryStocksNewsItems as $key => $categoryStocksNewsItem)
             <div class="col-12 col-md-6 col-lg-2 px-2 ">
                 <div class="">

@@ -241,41 +241,41 @@ $home_ads_banner = SiteSetting::getSiteSettings('home_ads_banner');
                     </a>
 
                     <ul class="main-menu justify-content-center">
-                        <li class="main-menu-active">
+                        <li class="{{ $current_route_name == 'front.home' ? 'main-menu-active': 'mega-menu-item' }}">
                             <a href="{{route('front.home')}}">Home</a>
                         </li>
 
                         @if ($current_route_name == 'front.home')
                         <li class="mega-menu-item">
-                            <a href="#category_id-1">Stocks</a>
+                            <a href="#category_id-1" class="scroll">Stocks</a>
                         </li>
                         <li class="mega-menu-item">
-                            <a href="#category_id-2">Economy Outlook</a>
+                            <a href="#category_id-2" class="scroll">Economy Outlook</a>
                         </li>
                         <li class="mega-menu-item">
-                            <a href="#category_id-3">Research</a>
+                            <a href="#category_id-3" class="scroll">Research</a>
                         </li>
                         <li class="mega-menu-item">
-                            <a href="#category_id-4">IPO's</a>
+                            <a href="#category_id-4" class="scroll">IPO's</a>
                         </li>
                         <li class="mega-menu-item">
-                            <a href="#category_id-5">	Company News</a>
+                            <a href="#category_id-5" class="scroll">Company News</a>
                         </li>
                         @else
                         <li class="mega-menu-item">
-                            <a href="{{route('front.home')}}#category_id-1">Stocks</a>
+                            <a href="{{route('front.home')}}#category_id-1" >Stocks</a>
                         </li>
                         <li class="mega-menu-item">
-                            <a href="{{route('front.home')}}#category_id-2">Economy Outlook</a>
+                            <a href="{{route('front.home')}}#category_id-2" >Economy Outlook</a>
                         </li>
                         <li class="mega-menu-item">
-                            <a href="{{route('front.home')}}#category_id-3">Research</a>
+                            <a href="{{route('front.home')}}#category_id-3" >Research</a>
                         </li>
                         <li class="mega-menu-item">
-                            <a href="{{route('front.home')}}#category_id-4">IPO's</a>
+                            <a href="{{route('front.home')}}#category_id-4" >IPO's</a>
                         </li>
                         <li class="mega-menu-item">
-                            <a href="{{route('front.home')}}#category_id-5">	Company News</a>
+                            <a href="{{route('front.home')}}#category_id-5" >Company News</a>
                         </li>
                         @endif
 

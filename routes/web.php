@@ -121,4 +121,7 @@ Route::group(['namespace' => 'Front'], function () {
 
     Route::get('/news-details/{slug}', [FrontPagesController::class, 'newsDetails'])->name('front.news.details');
     Route::get('/category/{slug}', [FrontPagesController::class, 'newsCatList'])->name('front.news.category.list');
+    Route::get('/news/search', [FrontPagesController::class, 'newsSearch'])->name('front.news.search');
+    Route::get('/news/archive', [FrontPagesController::class, 'newsArchive'])->name('front.news.archive');
+
 });

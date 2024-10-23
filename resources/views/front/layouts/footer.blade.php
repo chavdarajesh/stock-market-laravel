@@ -10,7 +10,7 @@
 
 
 {{-- Custom --}}
-<script src="{{ asset('custom-assets/front/js/toastr.min.js') }}"></script>
+<script src="{{ asset('custom-assets/default/front/js/toastr.min.js') }}"></script>
 
 <script>
     @if(Session::has('message'))
@@ -53,6 +53,20 @@
 
 
 <script>
+    $(document).ready(function() {
+        // Add smooth scrolling to all links with class 'scroll'
+        $(".scroll").on('click', function(event) {
+            event.preventDefault(); // Prevent default anchor click behavior
+
+            var target = this.hash;
+            if (target) {
+                $('html, body').animate({
+                    scrollTop: $(target).offset().top -50
+                }, 1000); // Time in milliseconds for the animation (1 second)
+            }
+        });
+    });
+
     $(document).ready(function() {
         // $('#newsletter-form').validate({
         //     rules: {

@@ -18,5 +18,5 @@
 
 
 {{-- Custom --}}
-<link rel="stylesheet" type="text/css" href="{{ asset('custom-assets/front/css/toastr.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('custom-assets/default/front/css/toastr.min.css') }}">
 @yield('css')

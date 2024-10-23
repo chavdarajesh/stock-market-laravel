@@ -1739,6 +1739,7 @@ a.breadcrumb-item:hover {
 .hov-bg0:hover {background-color: #fff;}
 
 .hov-cl10:hover {color: #17b978;}
+.hov-cl10.active {color: #17b978;}
 .hov-bg10:hover {background-color: #17b978;}
 
 /*---------------------------------------------*/
