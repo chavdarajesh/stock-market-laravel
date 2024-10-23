@@ -40,13 +40,13 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                        <a class="dropdown-item" href="{{route('admin.Projects.index')}}">View
+                                        <a class="dropdown-item" href="{{route('admin.news.index')}}">View
                                             More</a>
                                     </div>
                                 </div>
                             </div>
-                            <span class="fw-semibold d-block mb-1">Total Projects</span>
-                            <h3 class="card-title mb-2"> <span class="badge badge-center bg-success">{{ $data['Total_Project'] }}</span></h3>
+                            <span class="fw-semibold d-block mb-1">Total News</span>
+                            <h3 class="card-title mb-2"> <span class="badge badge-center bg-success">{{ $data['Total_News'] }}</span></h3>
                         </div>
                     </div>
                 </div>
