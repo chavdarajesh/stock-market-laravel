@@ -101,7 +101,7 @@
         </div>
         @endif
 
-        @if($newsItems->count() > 2)
+        @if($newsItems->count() > 3)
         <div class="col-md-2 order-3 order-md-3 px-2">
             <div class="row ">
                 <div class="col-sm-12">
