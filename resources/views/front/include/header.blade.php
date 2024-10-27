@@ -237,7 +237,7 @@ $home_ads_banner = SiteSetting::getSiteSettings('home_ads_banner');
                 <!-- Menu desktop -->
                 <nav class="menu-desktop">
                     <a class="logo-stick" href="{{route('front.home')}}">
-                        <img src="{{ asset('assets/front/images/icons/logo-01.png') }}" alt="LOGO">
+                        <img src="{{ isset($headerLogo) && isset($headerLogo->value) && $headerLogo != null ? asset($headerLogo->value) : asset('custom-assets/default/admin/images/siteimages/logo/header-logo.png') }}" alt="LOGO">
                     </a>
 
                     <ul class="main-menu justify-content-center">
