@@ -18,5 +18,20 @@
 
 
 {{-- Custom --}}
-<link rel="stylesheet" type="text/css" href="{{ asset('custom-assets/default/front/css/toastr.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('custom-assets/default/front/css/toastr.min.css') }}">.
+
+<style>
+    #google_translate_element select {
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        padding: 5px;
+        font-size: 14px;
+        color: #333;
+    }
+    #google_translate_element{
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+    }
+</style>
 @yield('css')

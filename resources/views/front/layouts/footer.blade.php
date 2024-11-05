@@ -8,7 +8,15 @@
 <!--===============================================================================================-->
 <script src="{{ asset('assets/front/js/main.js') }}"></script>
 
-
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {pageLanguage: 'en', includedLanguages: 'en,hi'},
+      'google_translate_element'
+    );
+  }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 {{-- Custom --}}
 <script src="{{ asset('custom-assets/default/front/js/toastr.min.js') }}"></script>
 

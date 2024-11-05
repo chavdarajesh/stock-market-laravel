@@ -231,3 +231,5 @@
          <span class="fas fa-angle-up"></span>
      </span>
  </div>
+
+ <div id="google_translate_element"></div>
